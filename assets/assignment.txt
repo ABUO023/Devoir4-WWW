@@ -1,0 +1,90 @@
+        Faculté de Génie – Département d’Informatique
+            CSI3540A : STRUCTURES ET NORMES DU WEB
+               Hiver 2026 – Devoir 4 & Devoir 5
+            (À rendre le vendredi 10 avril à 8 pm sur
+                           Brightspace)
+
+         Développement d'une application web avec JSP et Web Services
+
+Objectif :
+Ce devoir a pour but de vous familiariser avec le développement d'applications Web en
+utilisant JavaServer Pages (JSP) pour la couche de présentation et des Web Services pour la
+gestion des données et des traitements côté serveur.
+
+
+
+Contexte :
+
+Vous allez développer une application web de gestion des utilisateurs. Cette application
+permettra aux utilisateurs de s'inscrire, de se connecter et d'afficher la liste des utilisateurs
+enregistrés.
+
+    •   La partie JSP servira à afficher les interfaces utilisateur.
+    •   La partie Web Services (SOAP ou REST) servira à gérer les opérations d'inscription,
+        d'authentification et de récupération des utilisateurs.
+
+
+
+
+Travail demandé :
+
+1. Création du Web Service
+
+    •   Développez un Web Service RESTful en Java (JAX-RS) ou un Web Service SOAP (JAX-WS).
+    •   Ce Web Service devra exposer les fonctionnalités suivantes :
+            o Inscription d'un utilisateur (nom, email, mot de passe).
+            o Authentification (vérification des identifiants).
+            o Liste des utilisateurs enregistrés (retourne une liste JSON ou XML).
+    •   Stockez les utilisateurs dans une base de données (MySQL, PostgreSQL ou autre).
+
+2. Développement des JSP
+
+    •   Créez une interface simple en JSP + Servlets qui permet :
+            o L'inscription d'un nouvel utilisateur (formulaire).
+            o La connexion (formulaire de connexion).
+             o L'affichage de la liste des utilisateurs après connexion.
+    •   Utilisez JSTL (JavaServer Pages Standard Tag Library) pour la gestion dynamique des
+        données.
+    •   Faites appel au Web Service via AJAX ou via des Java Servlets.
+
+3. Déploiement et Tests
+
+    •   Testez votre Web Service avec Postman ou un client REST/SOAP.
+    •   Testez votre application Web JSP sur Tomcat ou sur un autre serveur Java EE.
+
+
+
+
+Livrables :
+
+    1. Code source du Web Service et des JSP.
+    2. Diagramme UML (diagramme de classes)
+       Représentant clairement la structure de l’application (classes principales, relations,
+       séparation frontend/backend).
+    3. Vidéo de démonstration (enregistrement d’écran)
+       Montrant :
+
+        •   Le fonctionnement de l’application (inscription, connexion, liste des utilisateurs)
+        •   Une explication de l’architecture (frontend, backend, interactions)
+        •   Une explication de l’implémentation du patron MVC
+        •   Une explication du diagramme UML
+
+    4. Fichier README
+       Incluant :
+
+        •   Les étapes pour installer et exécuter l’application
+        •   Les outils requis (serveur, base de données, etc.)
+        •   Comment tester le Web Service
+        •   Toute configuration nécessaire
+        •    L’application en fonctionnement.
+
+
+
+
+Critères d’évaluation :
+
+    •   Fonctionnalité du Web Service (implémentation correcte des endpoints).
+    •   Bonne utilisation des JSP et servlets
+    •   Connexion et manipulation de la base de données
+    •   Respect des principes MVC (Modèle-Vue-Contrôleur).
+    •   Interface utilisateur fonctionnelle et intuitive.
