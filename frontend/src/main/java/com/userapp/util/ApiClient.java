@@ -10,7 +10,7 @@ import org.apache.hc.core5.http.io.entity.StringEntity;
 
 public class ApiClient {
     
-    private static final String API_BASE_URL = "http://userapp-api/api";
+    private static final String API_BASE_URL = "http://userapp-api:8090/api";
     
     public static String post(String endpoint, String jsonBody) {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
