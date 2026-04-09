@@ -10,14 +10,17 @@ A full-stack Java web application demonstrating JSP/Servlets frontend with REST 
 4. [Quick Start](#quick-start)
 5. [Architecture](#architecture)
 6. [API Documentation](#api-documentation)
-7. [Usage Guide](#usage-guide)
-8. [Testing](#testing)
-9. [MVC Pattern](#mvc-pattern)
-10. [Troubleshooting](#troubleshooting)
+7. [MVC Pattern](#mvc-pattern)
 
 ---
 
 ## Project Overview
+
+### Hosted Version of this project : [https://d4.adityabaindur.dev/](https://d4.adityabaindur.dev/)
+
+### Demo
+
+[Demo Video Link](./assets/UMS.mp4)
 
 This is a **User Management System** that allows users to:
 
@@ -28,8 +31,16 @@ This is a **User Management System** that allows users to:
 The application follows the **MVC (Model-View-Controller)** architectural pattern with clear separation of concerns:
 
 - **Frontend**: JSP pages + Servlets for presentation layer
-- **Backend**: REST API (Spring Boot) for business logic
+- **Backend**: REST API for business logic
 - **Database**: PostgreSQL for data persistence
+
+This whole project runs on Docker due to an issue with my Tomcat installation. Check out [Quick Start](#quick-start).
+
+### UML
+
+The Interactive UML diagram with more explanations can be found in [UML_DIAGRAM.md](UML_DIAGRAM.md) (It was build using Mermaid.js)
+
+![UML](assets/uml.svg)
 
 ---
 
@@ -134,7 +145,8 @@ Devoir4/
 **Step 1: Clone or navigate to the project directory**
 
 ```bash
-cd /Users/adityabaindur/school/WWW/Devoir4
+git clone https://github.com/ABUO023/Devoir4-WWW.git 
+cd Devoir4-WWW
 ```
 
 **Step 2: Start all services with Docker Compose**
@@ -224,7 +236,7 @@ PostgreSQL Database
 
 ## API Documentation
 
-### Base URL
+### Base URL (Add bindings to docker compose for local dev)
 
 ```
 http://localhost:8090/api
@@ -399,114 +411,6 @@ curl -X POST http://localhost:8090/api/login \
 curl -X GET http://localhost:8090/api/users
 ```
 
----
-
-## Testing
-
-### Automated Testing Checklist
-
-#### 1. Database Connection
-
-- ✓ PostgreSQL container starts without errors
-- ✓ Database `userdb` created
-- ✓ Table `users` created with correct schema
-
-#### 2. Backend API Testing
-
-**Test Registration**:
-
-```bash
-# Test 1: Register a new user
-curl -X POST http://localhost:8090/api/register \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Alice","email":"alice@example.com","password":"alice123"}'
-
-# Expected: 200 OK with success message
-
-# Test 2: Register duplicate email (should fail)
-curl -X POST http://localhost:8090/api/register \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Bob","email":"alice@example.com","password":"bob123"}'
-
-# Expected: 400 Bad Request with error message
-```
-
-**Test Login**:
-
-```bash
-# Test 1: Valid login
-curl -X POST http://localhost:8090/api/login \
-  -H "Content-Type: application/json" \
-  -d '{"email":"alice@example.com","password":"alice123"}'
-
-# Expected: 200 OK with user data
-
-# Test 2: Invalid password
-curl -X POST http://localhost:8090/api/login \
-  -H "Content-Type: application/json" \
-  -d '{"email":"alice@example.com","password":"wrongpassword"}'
-
-# Expected: 400 Bad Request with error message
-
-# Test 3: Non-existent user
-curl -X POST http://localhost:8090/api/login \
-  -H "Content-Type: application/json" \
-  -d '{"email":"nonexistent@example.com","password":"pass123"}'
-
-# Expected: 400 Bad Request with error message
-```
-
-**Test Get Users**:
-
-```bash
-curl -X GET http://localhost:8090/api/users
-
-# Expected: 200 OK with JSON array of all users
-```
-
-#### 3. Frontend Testing
-
-**Test Registration Flow**:
-
-1. Open http://localhost:8080
-2. Click "Register"
-3. Enter valid data (name, email, password)
-4. Submit form
-5. Expected: Success message and redirect to login
-
-**Test Login Flow**:
-
-1. Open http://localhost:8080/login
-2. Enter valid credentials
-3. Submit form
-4. Expected: Redirect to /users page with user list
-
-**Test User List Display**:
-
-1. Login successfully
-2. Verify all users are displayed in table
-3. Verify table shows ID, Name, and Email columns
-
-**Test Logout**:
-
-1. Click "Logout" button
-2. Expected: Session cleared and redirect to login
-
-#### 4. Integration Testing
-
-**Complete Flow Test**:
-
-1. Register new user via web interface ✓
-2. Login with new credentials ✓
-3. Verify user appears in user list ✓
-4. Register another user ✓
-5. Verify both users in list ✓
-6. Logout ✓
-7. Login with first user ✓
-8. Logout ✓
-
----
-
 ## MVC Pattern
 
 ### Model
@@ -629,89 +533,4 @@ docker exec userapp-web curl http://api:8090/api/users
 
 ---
 
-## Additional Notes
-
-### Security Considerations
-
-- ⚠️ Passwords are stored in plain text (for educational purposes only)
-- 🔒 In production: Use bcrypt or similar hashing algorithms
-- 🔒 Add HTTPS/TLS encryption
-- 🔒 Implement proper authentication (JWT, OAuth)
-
-### Future Enhancements
-
-- [ ] Password hashing with bcrypt
-- [ ] JWT token-based authentication
-- [ ] Email validation
-- [ ] Password strength validation
-- [ ] User profile editing
-- [ ] Delete user functionality
-- [ ] Admin dashboard
-- [ ] Search and filter users
-- [ ] Pagination for user list
-- [ ] Rate limiting and request validation
-
----
-
-## Evaluation Criteria
-
-This project satisfies all assignment requirements:
-
-✅ **Web Service Functionality**
-
-- REST API with POST /register, POST /login, GET /users endpoints
-- Proper request/response handling with JSON
-
-✅ **JSP & Servlet Usage**
-
-- JSP pages for presentation layer
-- Servlets for handling form submissions and logic
-- JSTL used for dynamic content rendering
-
-✅ **Database Integration**
-
-- PostgreSQL database connection
-- User data persistence
-- Proper schema with indexes
-
-✅ **MVC Pattern**
-
-- Clear separation: Models, Views (JSP), Controllers (Servlets & REST)
-- Service layer for business logic
-- Repository layer for data access
-
-✅ **User Interface**
-
-- Functional and intuitive registration form
-- Login form with validation
-- User list table with all details
-- Logout functionality
-
-✅ **Docker & Deployment**
-
-- Docker Compose setup with 3 services
-- Single command deployment: `docker-compose up --build`
-- Proper networking and dependencies
-
-✅ **Documentation**
-
-- README with installation steps
-- API endpoint documentation
-- MVC pattern explanation
-- Testing guide and examples
-
----
-
-## Support
-
-For issues or questions:
-
-1. Check the Troubleshooting section
-2. Review logs with `docker-compose logs`
-3. Verify all containers are running: `docker-compose ps`
-4. Ensure ports are available: `lsof -i :8080`, `lsof -i :8090`, `lsof -i :5432`
-
----
-
-**Last Updated**: April 2026
-**Project Status**: Complete ✅
+Built with <3 @ UOttawa
