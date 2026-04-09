@@ -2,6 +2,8 @@
 
 A full-stack Java web application demonstrating JSP/Servlets frontend with REST API backend, built with Spring Boot and PostgreSQL, containerized with Docker.
 
+These docs can also be accessed at : [https://docs-d4.adityabaindur.dev](https://docs-d4.adityabaindur.dev)
+
 ## Table of Contents
 
 1. [Project Overview](#project-overview)
