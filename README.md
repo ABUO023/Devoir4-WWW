@@ -42,7 +42,7 @@ This whole project runs on Docker due to an issue with my Tomcat installation. C
 
 The Interactive UML diagram with more explanations can be found in [UML_DIAGRAM.md](UML_DIAGRAM.md) (It was build using Mermaid.js)
 
-![UML](./assets/uml.svg)
+![UML](./assets/UML.svg)
 
 ---
 
