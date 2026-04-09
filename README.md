@@ -20,11 +20,13 @@ A full-stack Java web application demonstrating JSP/Servlets frontend with REST 
 ## Project Overview
 
 This is a **User Management System** that allows users to:
+
 - Register with name, email, and password
 - Log in with email and password
 - View a list of all registered users (after login)
 
 The application follows the **MVC (Model-View-Controller)** architectural pattern with clear separation of concerns:
+
 - **Frontend**: JSP pages + Servlets for presentation layer
 - **Backend**: REST API (Spring Boot) for business logic
 - **Database**: PostgreSQL for data persistence
@@ -34,6 +36,7 @@ The application follows the **MVC (Model-View-Controller)** architectural patter
 ## Tech Stack
 
 ### Frontend
+
 - **Java** 17
 - **JSP** (JavaServer Pages)
 - **Servlets** (Jakarta Servlet API)
@@ -44,6 +47,7 @@ The application follows the **MVC (Model-View-Controller)** architectural patter
 - **Tomcat** 11
 
 ### Backend
+
 - **Java** 17
 - **Spring Boot** 3.1.0
 - **Spring Web** (REST endpoints)
@@ -52,9 +56,11 @@ The application follows the **MVC (Model-View-Controller)** architectural patter
 - **Lombok** (code generation)
 
 ### Database
+
 - **PostgreSQL** 16
 
 ### DevOps
+
 - **Docker** & **Docker Compose**
 
 ---
@@ -119,32 +125,38 @@ Devoir4/
 ## Quick Start
 
 ### Prerequisites
+
 - Docker & Docker Compose installed
 - (Optional) Git for cloning
 
 ### Installation & Running
 
 **Step 1: Clone or navigate to the project directory**
+
 ```bash
 cd /Users/adityabaindur/school/WWW/Devoir4
 ```
 
 **Step 2: Start all services with Docker Compose**
+
 ```bash
 docker-compose up --build
 ```
 
 **What this does:**
+
 1. Builds and starts PostgreSQL database (Port 5432)
 2. Builds and starts Spring Boot REST API (Port 8090)
 3. Builds and starts Tomcat with JSP application (Port 8080)
 4. Initializes database schema from `db/init.sql`
 
 **Step 3: Access the application**
+
 - Frontend: http://localhost:8080
 - Backend API: http://localhost:8090/api
 
 **Expected Output:**
+
 ```
 ✓ PostgreSQL running on port 5432
 ✓ Backend API running on port 8090
@@ -153,6 +165,7 @@ docker-compose up --build
 ```
 
 ### Stopping the Application
+
 ```bash
 docker-compose down
 ```
@@ -164,6 +177,7 @@ docker-compose down
 ### Layers
 
 #### 1. Presentation Layer (Frontend)
+
 - **Technology**: JSP + Servlets + HTML/CSS
 - **Port**: 8080
 - **Components**:
@@ -174,6 +188,7 @@ docker-compose down
   - `ApiClient`: Utility class for making HTTP requests to backend
 
 #### 2. Business Logic Layer (Backend)
+
 - **Technology**: Spring Boot REST API
 - **Port**: 8090
 - **Components**:
@@ -182,6 +197,7 @@ docker-compose down
   - `UserRepository`: JPA repository for database access
 
 #### 3. Data Access Layer
+
 - **Technology**: PostgreSQL + Spring Data JPA
 - **Database Name**: `userdb`
 - **Tables**: `users`
@@ -209,6 +225,7 @@ PostgreSQL Database
 ## API Documentation
 
 ### Base URL
+
 ```
 http://localhost:8090/api
 ```
@@ -220,6 +237,7 @@ http://localhost:8090/api
 **Endpoint**: `POST /api/register`
 
 **Request Body**:
+
 ```json
 {
   "name": "John Doe",
@@ -229,6 +247,7 @@ http://localhost:8090/api
 ```
 
 **Response (Success - 200)**:
+
 ```json
 {
   "success": true,
@@ -242,6 +261,7 @@ http://localhost:8090/api
 ```
 
 **Response (Error - 400)**:
+
 ```json
 {
   "success": false,
@@ -257,6 +277,7 @@ http://localhost:8090/api
 **Endpoint**: `POST /api/login`
 
 **Request Body**:
+
 ```json
 {
   "email": "john@example.com",
@@ -265,6 +286,7 @@ http://localhost:8090/api
 ```
 
 **Response (Success - 200)**:
+
 ```json
 {
   "success": true,
@@ -278,6 +300,7 @@ http://localhost:8090/api
 ```
 
 **Response (Error - 400)**:
+
 ```json
 {
   "success": false,
@@ -293,6 +316,7 @@ http://localhost:8090/api
 **Endpoint**: `GET /api/users`
 
 **Response (Success - 200)**:
+
 ```json
 [
   {
@@ -315,6 +339,7 @@ http://localhost:8090/api
 ### Via Web Interface (JSP Frontend)
 
 #### 1. Register a New User
+
 1. Navigate to http://localhost:8080
 2. Click "Register"
 3. Fill in Name, Email, and Password
@@ -323,6 +348,7 @@ http://localhost:8090/api
 6. Error: Error message displayed on the form
 
 #### 2. Login
+
 1. Navigate to http://localhost:8080/login
 2. Enter Email and Password
 3. Click "Login" button
@@ -330,11 +356,13 @@ http://localhost:8090/api
 5. Error: Error message displayed on the form
 
 #### 3. View Registered Users
+
 1. After successful login, you'll see the user list
 2. Displays ID, Name, and Email of all registered users
 3. Click "Logout" to return to login page
 
 #### 4. Logout
+
 1. Click "Logout" button on the users page
 2. Session invalidated and redirected to login page
 
@@ -343,6 +371,7 @@ http://localhost:8090/api
 ### Via REST API (Using Postman or curl)
 
 #### 1. Register a User
+
 ```bash
 curl -X POST http://localhost:8090/api/register \
   -H "Content-Type: application/json" \
@@ -354,6 +383,7 @@ curl -X POST http://localhost:8090/api/register \
 ```
 
 #### 2. Login
+
 ```bash
 curl -X POST http://localhost:8090/api/login \
   -H "Content-Type: application/json" \
@@ -364,6 +394,7 @@ curl -X POST http://localhost:8090/api/login \
 ```
 
 #### 3. Get All Users
+
 ```bash
 curl -X GET http://localhost:8090/api/users
 ```
@@ -375,6 +406,7 @@ curl -X GET http://localhost:8090/api/users
 ### Automated Testing Checklist
 
 #### 1. Database Connection
+
 - ✓ PostgreSQL container starts without errors
 - ✓ Database `userdb` created
 - ✓ Table `users` created with correct schema
@@ -382,6 +414,7 @@ curl -X GET http://localhost:8090/api/users
 #### 2. Backend API Testing
 
 **Test Registration**:
+
 ```bash
 # Test 1: Register a new user
 curl -X POST http://localhost:8090/api/register \
@@ -399,6 +432,7 @@ curl -X POST http://localhost:8090/api/register \
 ```
 
 **Test Login**:
+
 ```bash
 # Test 1: Valid login
 curl -X POST http://localhost:8090/api/login \
@@ -423,6 +457,7 @@ curl -X POST http://localhost:8090/api/login \
 ```
 
 **Test Get Users**:
+
 ```bash
 curl -X GET http://localhost:8090/api/users
 
@@ -432,6 +467,7 @@ curl -X GET http://localhost:8090/api/users
 #### 3. Frontend Testing
 
 **Test Registration Flow**:
+
 1. Open http://localhost:8080
 2. Click "Register"
 3. Enter valid data (name, email, password)
@@ -439,23 +475,27 @@ curl -X GET http://localhost:8090/api/users
 5. Expected: Success message and redirect to login
 
 **Test Login Flow**:
+
 1. Open http://localhost:8080/login
 2. Enter valid credentials
 3. Submit form
 4. Expected: Redirect to /users page with user list
 
 **Test User List Display**:
+
 1. Login successfully
 2. Verify all users are displayed in table
 3. Verify table shows ID, Name, and Email columns
 
 **Test Logout**:
+
 1. Click "Logout" button
 2. Expected: Session cleared and redirect to login
 
 #### 4. Integration Testing
 
 **Complete Flow Test**:
+
 1. Register new user via web interface ✓
 2. Login with new credentials ✓
 3. Verify user appears in user list ✓
@@ -470,12 +510,14 @@ curl -X GET http://localhost:8090/api/users
 ## MVC Pattern
 
 ### Model
+
 - **Entity**: `User` class with properties (id, name, email, password)
 - **Repository**: `UserRepository` provides database access
 - **DTOs**: `RegisterRequest`, `LoginRequest`, `UserDTO`, `LoginResponse` for data transfer
 
 ### View
-- **JSP Pages**: 
+
+- **JSP Pages**:
   - `register.jsp`: User registration form
   - `login.jsp`: User login form
   - `users.jsp`: Displays list of users
@@ -483,14 +525,17 @@ curl -X GET http://localhost:8090/api/users
 - **HTML/CSS**: Styled with gradient backgrounds and modern UI
 
 ### Controller
+
 - **Backend Controllers**: `UserController` REST endpoints
 - **Frontend Servlets**: `RegisterServlet`, `LoginServlet`, `UsersServlet`, `LogoutServlet`
 
 ### Service Layer
+
 - **UserService**: Encapsulates business logic for user operations
 - **ApiClient**: Utility for frontend-to-backend communication
 
 **Benefits of MVC**:
+
 - Separation of concerns
 - Easy to test individual components
 - Scalable and maintainable code
@@ -503,6 +548,7 @@ curl -X GET http://localhost:8090/api/users
 ### Docker Issues
 
 **Issue**: Ports already in use
+
 ```bash
 # Solution: Check what's using the ports
 lsof -i :8080
@@ -516,6 +562,7 @@ kill -9 <PID>
 ```
 
 **Issue**: Docker daemon not running
+
 ```bash
 # Solution: Start Docker Desktop or Docker daemon
 # macOS: open /Applications/Docker.app
@@ -523,6 +570,7 @@ kill -9 <PID>
 ```
 
 **Issue**: Container exits immediately
+
 ```bash
 # View logs
 docker-compose logs -f api
@@ -537,6 +585,7 @@ docker-compose up --build
 ### Database Issues
 
 **Issue**: "Cannot connect to database"
+
 ```bash
 # Check if db container is running
 docker ps | grep postgres
@@ -548,6 +597,7 @@ docker-compose logs db
 ```
 
 **Issue**: "User already exists" error
+
 ```bash
 # Clear database
 docker-compose down -v
@@ -559,6 +609,7 @@ docker-compose up --build
 ### Application Issues
 
 **Issue**: Frontend cannot reach backend API
+
 ```bash
 # Check if backend is running
 curl http://localhost:8090/api/users
@@ -570,6 +621,7 @@ docker exec userapp-web curl http://api:8090/api/users
 ```
 
 **Issue**: Session lost after redirect
+
 ```bash
 # Ensure cookies are properly set
 # Check browser console for cookie-related messages
@@ -580,12 +632,14 @@ docker exec userapp-web curl http://api:8090/api/users
 ## Additional Notes
 
 ### Security Considerations
+
 - ⚠️ Passwords are stored in plain text (for educational purposes only)
 - 🔒 In production: Use bcrypt or similar hashing algorithms
 - 🔒 Add HTTPS/TLS encryption
 - 🔒 Implement proper authentication (JWT, OAuth)
 
 ### Future Enhancements
+
 - [ ] Password hashing with bcrypt
 - [ ] JWT token-based authentication
 - [ ] Email validation
@@ -604,36 +658,43 @@ docker exec userapp-web curl http://api:8090/api/users
 This project satisfies all assignment requirements:
 
 ✅ **Web Service Functionality**
+
 - REST API with POST /register, POST /login, GET /users endpoints
 - Proper request/response handling with JSON
 
 ✅ **JSP & Servlet Usage**
+
 - JSP pages for presentation layer
 - Servlets for handling form submissions and logic
 - JSTL used for dynamic content rendering
 
 ✅ **Database Integration**
+
 - PostgreSQL database connection
 - User data persistence
 - Proper schema with indexes
 
 ✅ **MVC Pattern**
+
 - Clear separation: Models, Views (JSP), Controllers (Servlets & REST)
 - Service layer for business logic
 - Repository layer for data access
 
 ✅ **User Interface**
+
 - Functional and intuitive registration form
 - Login form with validation
 - User list table with all details
 - Logout functionality
 
 ✅ **Docker & Deployment**
+
 - Docker Compose setup with 3 services
 - Single command deployment: `docker-compose up --build`
 - Proper networking and dependencies
 
 ✅ **Documentation**
+
 - README with installation steps
 - API endpoint documentation
 - MVC pattern explanation
@@ -644,6 +705,7 @@ This project satisfies all assignment requirements:
 ## Support
 
 For issues or questions:
+
 1. Check the Troubleshooting section
 2. Review logs with `docker-compose logs`
 3. Verify all containers are running: `docker-compose ps`

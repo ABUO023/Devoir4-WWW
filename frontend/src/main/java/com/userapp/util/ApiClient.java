@@ -1,17 +1,16 @@
 package com.userapp.util;
 
+import java.nio.charset.StandardCharsets;
+
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
-import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.io.entity.StringEntity;
-
-import java.nio.charset.StandardCharsets;
 
 public class ApiClient {
     
-    private static final String API_BASE_URL = "http://localhost:8090/api";
+    private static final String API_BASE_URL = "http://userapp-api/api";
     
     public static String post(String endpoint, String jsonBody) {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
