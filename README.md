@@ -20,6 +20,8 @@ A full-stack Java web application demonstrating JSP/Servlets frontend with REST 
 
 ### Demo
 
+https://github.com/user-attachments/assets/cec1bcc4-b1da-4d4a-b855-21dfd53336e5
+
 [Demo Video Link](./assets/UMS.mp4)
 
 This is a **User Management System** that allows users to:
